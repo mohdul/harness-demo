@@ -20,6 +20,6 @@ jobs:
           password: "dckr_pat_J71E3QOl4fTgWI7GjhnXiND7GSo"          
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag adzpppxbswbb/my-app:$(date +%s)
+      run: docker build . --file Dockerfile --tag adzpppxbswbb/my-app:$(git rev-parse --short "$GITHUB_SHA")
     - name: Push to registry
-      run: docker push adzpppxbswbb/my-app:$(date +%s)
+      run: docker push adzpppxbswbb/my-app:$(git rev-parse --short "$GITHUB_SHA")
